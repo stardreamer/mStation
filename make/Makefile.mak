@@ -8,7 +8,7 @@ BINDIR := bin
 HEXDIR := hex
 
 CC := avr-gcc
-FLAGS := -Os -DFF_CPU=16000000UL -mmcu=atmega328p -ffreestanding -c
+FLAGS := -Os -DFF_CPU=16000000UL -mmcu=atmega328p -c
 
 HEXDIR_REL := $(addprefix ../, $(HEXDIR))
 
@@ -34,12 +34,12 @@ $(HEXDIR_REL)/mStation.hex: $(BINDIR_REL)/mStation
 	avr-objcopy -O ihex -R .eeprom $(BINDIR_REL)/mStation $(HEXDIR_REL)/mStation.hex
 
 $(BINDIR_REL)/mStation: $(OBJFILES) 
-	$(CC) -mmcu=atmega328p $^ -o $@ -lm
+	$(CC) -mmcu=atmega328p $^ -o $@ 
 
 	
 
 $(OBJDIR_REL)/%.o: $(SRCDIR_REL)/%.c
-	$(CC) $<  $(FLAGS) $(addprefix -I, $(SRCDIR_REL)) -o $@ -pipe -lm
+	$(CC) $<  $(FLAGS) $(addprefix -I, $(SRCDIR_REL)) -o $@ -pipe 
 	
 include  $(wildcard $(OBJDIR_REL)/*.d)
 #Все пользователи имеют право читать копируется в каталог

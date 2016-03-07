@@ -38,7 +38,7 @@ int main(void)
     
     while(1)
     {
-        value =(double)0.5*ReadADC(PORTC0); 
+        value =((double)500/1023)*ReadADC(PORTC0); 
         
         printf("%u\n", (uint16_t)value);
     }

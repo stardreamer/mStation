@@ -5,6 +5,7 @@
 #define USART_BAUDRATE 9600
 #define UBRR_VALUE (((F_CPU / (USART_BAUDRATE * 16UL))) - 1)
 
+// test comment
 
 void USART0Init(void)
 {

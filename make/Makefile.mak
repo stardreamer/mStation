@@ -29,6 +29,8 @@ default:
 	
 mStation:$(BINDIR_REL)/mStation $(HEXDIR_REL)/mStation.hex  $(OBJFILES)  
 	@echo -e "Компиляция mpi программы успешна\n"
+flash: $(BINDIR_REL)/mStation $(HEXDIR_REL)/mStation.hex  $(OBJFILES) 
+	sudo avrdude -F -V -c arduino -p ATMEGA328P -P /dev/ttyUSB0 -b 115200 -U flash:w:$(HEXDIR_REL)/mStation.hex
 
 $(HEXDIR_REL)/mStation.hex: $(BINDIR_REL)/mStation
 	avr-objcopy -O ihex -R .eeprom $(BINDIR_REL)/mStation $(HEXDIR_REL)/mStation.hex
@@ -53,4 +55,4 @@ delete:
 	@echo "Клиент удалён!"
 	@rm -f $(BINDIR_REL)
 	@echo "Сервер удалён!"
-.PHONY: clean delete mStation
+.PHONY: clean delete mStation flash

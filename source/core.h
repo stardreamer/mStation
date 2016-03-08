@@ -5,7 +5,10 @@
 #define USART_BAUDRATE 9600
 #include <avr/io.h>
 #include <stdio.h>
+#include <util/delay.h>
 
 void USART0Init(void);
 int USART0SendByte(char u8Data, FILE *stream);
+void InitADC();
+uint16_t ReadADC(uint8_t ADCchannel);
 #endif

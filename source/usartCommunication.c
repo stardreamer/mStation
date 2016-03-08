@@ -12,7 +12,7 @@ void USART0Init(void)
 }
     
 int USART0SendByte(char u8Data, FILE *stream)
-    {
+{
        if(u8Data == '\n')
        {
             USART0SendByte('\r', stream);

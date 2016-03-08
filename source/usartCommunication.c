@@ -1,4 +1,4 @@
-#include "usartCommunication.h"
+#include "core.h"
 
 void USART0Init(void)
 {

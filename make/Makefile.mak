@@ -8,7 +8,7 @@ BINDIR := bin
 HEXDIR := hex
 
 CC := avr-gcc
-FLAGS := -Os -DFF_CPU=16000000UL -mmcu=atmega328p -c
+FLAGS := -Os -DFF_CPU=16000000UL -mmcu=atmega328p -std=c99 -c
 
 HEXDIR_REL := $(addprefix ../, $(HEXDIR))
 

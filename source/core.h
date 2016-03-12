@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <util/delay.h>
 #include "datatypes.h"
+#include "dht22.h"
 
 void USART0Init(void);
 int USART0SendByte(char u8Data, FILE *stream);

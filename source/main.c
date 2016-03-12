@@ -5,7 +5,6 @@ FILE usart0_str = FDEV_SETUP_STREAM(USART0SendByte, NULL, _FDEV_SETUP_WRITE);
 
 int main(void)
 {
-    double value = 0.0;
     //initialize ADC
     InitADC();
     //Initialize USART0
@@ -13,9 +12,18 @@ int main(void)
     //assign our stream to standart I/O streams
     stdout=&usart0_str;
     
+    dht22Data mydata = {
+        .integralTemp = 0,
+        .fracTemp = 0,
+        .integralHumidity = 0,
+        .fracHumidity = 0,
+        .pinNumber = 1,
+        .errorCode = DHT_NOT_INIT};
+        
+    dht_init(&mydata);
+    
     while(1)
     {
-        value =((double)500/1023)*ReadADC(PORTC0); 
-        printf("%u\n", (uint16_t)value);
+        printf("%i %i %i\n", mydata.integralTemp, mydata.pinNumber, mydata.errorCode);
     }
 }
